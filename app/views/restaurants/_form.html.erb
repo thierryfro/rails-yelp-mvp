@@ -1,0 +1,31 @@
+<%= simple_form_for(@restaurant) do |f| %>
+  <% if @restaurant.errors.any? %>
+    <div class="errors-container">
+      <ul>
+        <% @restaurant.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="container">
+    <%= simple_form_for(@restaurant, html: { class: 'form-inline' }) do |f| %>
+      <div class="form-group">
+        <%= f.input :name %>
+      </div>
+      <div class="form-group">
+        <%= f.input :address %>
+      </div>
+      <div class="form-group">
+        <%= f.input :category, collection: Restaurant::CATEG %>
+      </div>
+      <div class="form-group">
+        <%= f.input :phone_number %>
+      </div>
+      <%= f.submit class: "btn btn-success" %>
+    <% end %>
+  </div>
+
+<% end %>
